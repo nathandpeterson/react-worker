@@ -1,0 +1,19 @@
+.btn {
+  padding: 1.25rem;
+  border-radius: 6px;
+  outline: gray;
+  background: linear-gradient(gray, green);
+  color: white;
+  box-shadow: 0 5px 10px rgba(black, .2);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 3px;
+
+  &:hover {
+    background: linear-gradient(gray, seagreen);
+    transition: all .5s;
+    transform: scale(1.1);
+    cursor: pointer;
+    color: yellow;
+  }
+}

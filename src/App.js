@@ -1,28 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import worker from './app.worker.js'
+import WebWorker from './WebWorker'
+import "./styles/main.scss"
 
 class App extends Component {
+
+  componentDidMount(){
+    this.worker = new WebWorker(worker)
+    this.worker.postMessage('message', e => {
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="main-container">
+        <h1>worker demo</h1>
+        <button className='btn calculate-btn'>calculate</button>
       </div>
     );
   }
 }
 
-export default App;
+export default App
