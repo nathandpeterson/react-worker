@@ -3,11 +3,13 @@ import worker from './app.worker.js'
 import WebWorker from './WebWorker'
 import "./styles/main.scss"
 import { MagicLoader } from './components/MagicLoader'
+import { Chart } from './components/Chart'
 
 class App extends Component {
 
   state = {
     input: '',
+    data: null,
     loading: false
   }
 
@@ -22,8 +24,13 @@ class App extends Component {
 
     this.setState({loading: true}, () => {
       this.worker.addEventListener('message', event => {
-        console.log('event in react callback', event)
-        this.setState({ loading: false })
+        if(event.data && event.data.payload){
+          this.setState({ loading: false, data: event.data.payload })
+        } else {
+          console.log('error', event)
+          this.setState({ loading: false })
+        }
+       
       })
     })
   }
@@ -52,6 +59,7 @@ class App extends Component {
           className='btn calculate-btn'>
           calculate
         </button>
+        <Chart data={this.state.data} />
       </div>
     );
   }

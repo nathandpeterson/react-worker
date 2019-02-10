@@ -1,16 +1,25 @@
 
-function helperFunction(input){
-
-}
+function helperFunction(){}
 
 export default function() {
 
+  helperFunction = (input) => {
+    let result = []
+    for(let i = 0; i < input.length; i++) {
+      let code = input.charCodeAt(i)
+      result.push({x: code, y: i })
+    }
+    return result 
+  }
+
   onmessage = (e) => {
-    console.log('e in worker', e)
     if(!e.data) return
     if((e.data && e.data.type === 'input') ) {
+      let payload = helperFunction(e.data.input)
       setTimeout(() => {
-        postMessage('SUCCESS')
+        postMessage(
+          { message: 'success', payload }
+        )
       }, 5000)
     }
   }
