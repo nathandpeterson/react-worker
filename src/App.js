@@ -27,7 +27,6 @@ class App extends Component {
         if(event.data && event.data.payload){
           this.setState({ loading: false, data: event.data.payload })
         } else {
-          console.log('error', event)
           this.setState({ loading: false })
         }
        
@@ -40,23 +39,24 @@ class App extends Component {
   }
 
   render() {
+    const { loading } = this.state 
     return (
       <div className="main-container">
         <div className="flex-center">
           <h1>worker demo</h1>
         </div>
-        <MagicLoader loading={this.state.loading} />
+        <MagicLoader loading={loading} />
         <div>
           <input
             onChange={(e) => this.handleChange(e)}
-            className='input' 
+            className={`input ${loading && 'input__left'}`} 
             type='text'
             value={this.state.input}
             />
         </div>
         <button
           onClick={this.handleClick} 
-          className='btn calculate-btn'>
+          className={`btn ${loading && 'btn__left'}`}>
           calculate
         </button>
         <Chart data={this.state.data} />

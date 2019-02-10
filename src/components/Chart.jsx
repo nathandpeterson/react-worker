@@ -8,15 +8,15 @@ export const Chart = ({ data }) => {
   return (
     <div style={{width: '50%'}}>
        <VictoryChart
+        animate={{ duration: 1000 }}
         theme={VictoryTheme.material}
         >
         <VictoryArea
           interpolation="natural"
-          style={{ data: { fill: "#c43a31" } }}
+          style={{ data: { fill: "#8E4A49" } }}
           data={data}
         />
       </VictoryChart>
-
     </div>
    
   )
