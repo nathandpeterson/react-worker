@@ -1,9 +1,9 @@
 
-function helperFunction(){}
+function helperFunction(){} // ? avoids linting error?
 
-export default function() {
+export default () =>  { // eslint-disable-line no-restricted-globals
 
-  helperFunction = (input) => {
+ helperFunction = (input) => {
     let result = []
     for(let i = 0; i < input.length; i++) {
       let code = input.charCodeAt(i)
