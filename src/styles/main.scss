@@ -1,3 +1,10 @@
-@import "./base.scss";
+@import "./base/base";
+@import "./base/typography";
+@import './base/utilities';
+@import "./base/animations";
 
 @import "./components/primary-button";
+@import "./components/input";
+@import "./components/magic-loader";
+
+@import "./pages/home";
